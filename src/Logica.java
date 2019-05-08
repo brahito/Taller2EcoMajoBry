@@ -9,16 +9,21 @@ public class Logica {
 	private float angulo = -app.PI / 4;
 	private PVector posicion;
 	private boolean disparar = false;
+	private boolean moverFlecha, aplicarFuerza;
+	private float moverAngulo;
 
 	public Logica(PApplet app) {
 		this.app = app;
 		gravedad = 0.163f;
 		posicion = new PVector(50, 300);
-		pelotita = new PelotaG(app, posicion.x -10, posicion.y);
+		pelotita = new PelotaG(app, posicion.x - 10, posicion.y);
 		x = 100;
 		y = 100;
 		velY = 5;
 		velX = 5;
+		moverFlecha = true;
+		aplicarFuerza = false;
+		moverAngulo = 0.05f;
 	}
 
 	public void ejecutar() {
@@ -36,10 +41,16 @@ public class Logica {
 		pelotita.pintar();
 
 		if (pelotita.posicion.y > app.height) {
-			pelotita = new PelotaG(app, posicion.x -10, posicion.y);
+			pelotita = new PelotaG(app, posicion.x - 10, posicion.y);
 			disparar = false;
 		}
-		angulo += 0.005;
+		if (moverFlecha == true) {
+			angulo += moverAngulo;
+		}
+		if (angulo > 1.3f) {
+			moverAngulo *= -1;
+		} else if (angulo < -1.3f)
+			moverAngulo *= -1;
 		System.out.println(angulo);
 	}
 
@@ -49,13 +60,18 @@ public class Logica {
 			angulo += 0.1;
 		} else if (app.key == app.CODED && app.keyCode == app.LEFT) {
 			angulo -= 0.1;
-		} else if (app.key == ' ') {
-			disparar = true;
-			PVector force = PVector.fromAngle(angulo);
-			force.mult(10);
-			pelotita.applyForce(force);
-
 		}
+//		else if (app.key == ' ') {
+//			disparar = true;
+//			PVector force = PVector.fromAngle(angulo);
+//			force.mult(10);
+//			pelotita.applyForce(force);
+//		}
+	}
 
+	public void tecla() {
+		if (app.key == ' ' && moverFlecha == true) {
+			moverFlecha = false;
+		}
 	}
 }

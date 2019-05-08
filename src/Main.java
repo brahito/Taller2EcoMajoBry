@@ -22,6 +22,7 @@ public class Main extends PApplet {
 	}
 	public void keyPressed() {
 		log.lanzar();
+		log.tecla();
 	}
 
 }
