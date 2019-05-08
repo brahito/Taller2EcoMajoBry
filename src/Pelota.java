@@ -29,6 +29,25 @@ public abstract class Pelota {
 
 	public abstract void pintar();
 
-	public abstract void mover();
+	public boolean validarAro(Aro aro) {
+		if (app.dist(posicion.x, posicion.y, aro.getX(), aro.getY()) < 25) {
+			return true;
+		}
+		return false;
+	}
 
+	public boolean validarEnemigo(Obstaculo obstaculo) {
+		if (app.dist(posicion.x, posicion.y, obstaculo.getX(), obstaculo.getY()) < 25) {
+			return true;
+		}
+		return false;
+	}
+
+	public float getX() {
+		return posicion.x;
+	}
+
+	public float getY() {
+		return posicion.y;
+	}
 }

@@ -13,14 +13,9 @@ public class PelotaG extends Pelota {
 		app.strokeWeight(2);
 		app.pushMatrix();
 		app.translate(posicion.x, posicion.y);
+		app.fill(200, 100, 100);
 		app.ellipse(0, 0, r * 2, r * 2);
 		app.popMatrix();
-
-	}
-
-	@Override
-	public void mover() {
-		// TODO Auto-generated method stub
 
 	}
 
