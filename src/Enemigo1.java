@@ -2,9 +2,9 @@ import processing.core.PApplet;
 
 public class Enemigo1 extends Obstaculo {
 
-	public Enemigo1(int x, int y, PApplet app) {
-		super(x, y, app);
-		// TODO Auto-generated constructor stub
+	public Enemigo1(PApplet app,int x, int y) {
+		super(app, x, y);
+		imagen = app.loadImage("profe1.png");
 	}
 
 	@Override

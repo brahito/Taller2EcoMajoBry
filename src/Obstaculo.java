@@ -1,10 +1,12 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public abstract class Obstaculo {
 	protected PApplet app;
 	protected int x, y;
+	protected PImage imagen;
 
-	public Obstaculo(int x, int y, PApplet app) {
+	public Obstaculo(PApplet app, int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.app = app;
@@ -29,6 +31,5 @@ public abstract class Obstaculo {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
-	
+
 }
